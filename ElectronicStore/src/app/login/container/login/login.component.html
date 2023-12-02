@@ -5,10 +5,13 @@
 <div class="container content">
   <div class="row">
     <div class="col-md-6">
-      <img src="/assets/login-01.png" alt="" width="90%" height="100%">
+      <img src="/assets/login-01 (1).png" alt="" width="90%" height="100%">
     </div>
     <div class="col-md-6">
-      <es-login-form></es-login-form>
+      <es-login-form
+      [esLoginForm]="esLoginForm"
+      (outputEmitter)="outputEmitter($event)"
+      ></es-login-form>
     </div>
   </div>
 </div>

@@ -1,0 +1,206 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="esSignupForm">
+      <div>
+        <h1 class="fw-bold ms-4">
+          Sign Up
+        </h1>
+        <h5 class="text-secondary ms-4">
+          Where finding gadgets is an awesome experience.
+        </h5>
+      </div>
+      <div style="height: 30rem;" class="overflow-auto">
+        <div class="row me-3 ms-3 mt-4">
+          <div class="col-md-6">
+            <button class="btn btn-outline-primary w-100">
+              <i class="bi bi-google me-3 mb-1"></i>
+              <span class="mb-1">Sign Up with Google</span>
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-outline-primary  w-100">
+              <i class="bi bi-facebook me-3 mb-1"></i>
+              <span class="mb-1">Sign Up with FaceBook</span>
+            </button>
+          </div>
+        </div>
+        <div class="row me-3 ms-3 mt-3">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text"
+                     autocomplete="new-text"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esFirstName')?.errors && isSubmitted}"
+                     formControlName="esFirstName"
+                     class="form-control"
+                     id="esFirstName"
+                     oninput="this.value = this.value.replace(/[^A-Za-z0-9-,.;'&/.() ]|^ /g,'')"
+                     placeholder="First Name"
+              />
+              <label for="esFirstName">First Name</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text"
+                     autocomplete="new-text"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esLastName')?.errors && isSubmitted}"
+                     formControlName="esLastName"
+                     class="form-control"
+                     oninput="this.value = this.value.replace(/[^A-Za-z0-9-,.;'&/.() ]|^ /g,'')"
+                     id="esLastName"
+                     placeholder="First Name"
+              />
+              <label for="esLastName">Last Name</label>
+            </div>
+          </div>
+        </div>
+        <div class="row me-3 ms-3 mt-3">
+          <div class="col-md-12">
+            <div class="form-floating">
+              <input type="text"
+                     autocomplete="new-text"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esUserName')?.errors && isSubmitted}"
+                     formControlName="esUserName"
+                     class="form-control"
+                     oninput="this.value = this.value.replace(/[^A-Za-z0-9-,.;'&/.() ]|^ /g,'')"
+                     id="esUserName"
+                     placeholder="Enter Username"
+              />
+              <label for="esUserName">Enter Username</label>
+            </div>
+          </div>
+        </div>
+        <div class="row me-3 ms-3 mt-3">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="password"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esPassword')?.errors && isSubmitted}"
+                     formControlName="esPassword"
+                     autocomplete="new-text"
+                     id="esPassword"
+                     placeholder="Enter Password"
+              />
+              <label for="esPassword">Enter Password</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="password"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esConfPassword')?.errors && isSubmitted}"
+                     formControlName="esConfPassword"
+                     autocomplete="new-text"
+                     id="esConfPassword"
+                     placeholder="Confirm Password"
+              />
+              <label for="esPassword">Confirm Password</label>
+            </div>
+          </div>
+        </div>
+        <div class="row me-3 ms-3 mt-3">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="email"
+                     autocomplete="new-text"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esEmailId')?.errors && isSubmitted}"
+                     formControlName="esEmailId"
+                     id="esEmailId"
+                     oninput="this.value = this.value.replace(/(^\s*)/gi,'')"
+                     placeholder="Enter Email Id"
+              />
+              <label for="esEmailId">Enter Email Id</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text"
+                     autocomplete="new-text"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esUserMobNum')?.errors && isSubmitted}"
+                     formControlName="esUserMobNum"
+                     maxlength="10"
+                     oninput="this.value = this.value.replace(/(^\s*)/gi,'').replace(/(^0*)/gi,'').replace(/[^0-9]+/g, '')"
+                     id="esUserMobNum"
+                     placeholder="Enter Mobile Number"
+              />
+              <label for="esUserMobNum">Enter Mobile Number</label>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row me-3 ms-3 mt-3">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <select class="form-select" aria-label="Default select example" id="esUserGender">
+                <option selected>--Select--</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              <label for="esUserGender">Select Gender</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text"
+                     autocomplete="new-text"
+                     class="form-control"
+                     id="esAge"
+                     placeholder="Enter Age"
+              />
+              <label for="esAge">Enter Age</label>
+            </div>
+          </div>
+        </div>
+        <div class="row me-3 ms-3 mt-3">
+          <div class="col-md-4">
+            <div class="form-floating">
+              <input type="email"
+                     autocomplete="new-text"
+                     class="form-control"
+                     id="esUserState"
+                     placeholder="Enter Country"
+              />
+              <label for="esUserState">Enter Country</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-floating">
+              <input type="text"
+                     autocomplete="new-text"
+                     class="form-control"
+                     id="esUserCountry"
+                     placeholder="Enter State"
+              />
+              <label for="esUserCountry">Enter State</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-floating">
+              <input type="text"
+                     autocomplete="new-text"
+                     class="form-control"
+                     id="esUserZip"
+                     placeholder="Enter Zipcode"
+              />
+              <label for="esUserZip">Enter Zipcode</label>
+            </div>
+          </div>
+        </div> -->
+        <div class="row me-3 ms-3 mt-3">
+          <div class="col-md-12">
+            <div class="form-floating">
+              <button type="button"
+                class="btn btn-primary w-100 p-3"
+                (click)="submitForSignup()"
+             >
+              Submit for Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

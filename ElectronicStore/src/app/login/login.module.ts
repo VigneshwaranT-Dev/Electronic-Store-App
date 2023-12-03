@@ -10,18 +10,22 @@ import { LoginService } from './services/login.service';
 import { AppModule } from '../app.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { SignupComponent } from './container/signup/signup.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     LoginFormComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    SignupComponent,
+    SignupFormComponent
   ],
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     LoginComponent,

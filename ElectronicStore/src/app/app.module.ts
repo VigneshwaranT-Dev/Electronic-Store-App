@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './login/login.module';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,11 @@ import { LoginModule } from './login/login.module';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    LoginModule
+    LoginModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

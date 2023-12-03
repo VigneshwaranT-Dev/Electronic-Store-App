@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './services/login.service';
 import { AppModule } from '../app.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     LoginComponent,
     LoginFormComponent,
-    ErrorPageComponent
-  ]
+    ErrorPageComponent,
+  ],
+  providers: [LoginService]
 })
 export class LoginModule { }

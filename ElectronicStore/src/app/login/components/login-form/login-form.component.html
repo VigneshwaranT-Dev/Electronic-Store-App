@@ -8,6 +8,7 @@
       <div class="form-floating m-3 mx-4 mt-5">
         <input type="text"
                class="form-control"
+               [ngClass]="{ 'is-invalid': esLoginForm.get('esUserName')?.errors && isSubmitted}"
                id="esUserName"
                formControlName="esUserName"
                placeholder="Username"
@@ -17,6 +18,7 @@
       <div class="form-floating  m-4">
         <input type="password"
                class="form-control"
+               [ngClass]="{ 'is-invalid': esLoginForm.get('esPassword')?.errors && isSubmitted}"
                id="esPassword"
                formControlName="esPassword"
                placeholder="Password"

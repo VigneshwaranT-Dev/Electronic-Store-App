@@ -8,6 +8,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
   @Input() esLoginForm!: FormGroup;
+  @Input() isSubmitted!: any;
   @Output() outputEmitter = new EventEmitter<any>;
 
   constructor(){}

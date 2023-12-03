@@ -7,7 +7,13 @@ export const esLoginFormObject: IFormObject = {
     label: 'esUserName',
     value: '',
     type: 'InputText',
-    validations: [],
+    validations: [
+      {
+        validator: 'required',
+        value: true,
+        message: 'Username Required'
+      }
+    ],
     disabled: false,
   },
   esPassword: {
@@ -15,7 +21,13 @@ export const esLoginFormObject: IFormObject = {
     label: 'esPassword',
     value: '',
     type: 'InputText',
-    validations: [],
+    validations: [
+      {
+        validator: 'required',
+        value: true,
+        message: 'Password Required'
+      }
+    ],
     disabled: false,
   }
 }

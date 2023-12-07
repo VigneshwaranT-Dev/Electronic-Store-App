@@ -15,6 +15,7 @@ import * as CryptoJS from 'crypto-js';
 export class SignupComponent implements OnInit {
   public esSignupFormEntity: IFormObject = esSignupFormObject;
   public esSignupForm!: FormGroup;
+  public esUsersList!: any;
 
   public isSubmitted = false;
 
@@ -38,12 +39,33 @@ export class SignupComponent implements OnInit {
         this.showErrors();
         this.isSubmitted = true;
         const hashedPassword = this.hashPassword(event.value.esPassword);
+        const hashedConfPassword = this.hashPassword(event.value.esConfPassword);
+
         const payload = {
+          esFirstName: event.value.esFirstName,
           esUserName: event.value.esUserName,
-          esPassword: hashedPassword
+          esLastName: event.value.esLastName,
+          esEmailId: event.value.esEmailId,
+          esUserMobNum: event.value.esUserMobNum,
+          esPassword: hashedPassword,
+          esConfPassword: hashedConfPassword,
         }
         if(this.esSignupForm.dirty && this.esSignupForm.valid) {
-          this.loginService.loginUser(payload).subscribe((res: any) => {});
+          this.loginService.signupUser(payload).subscribe((res: any) => {
+            if(res !==  null){
+              this.esSignupForm.patchValue(
+                {
+                  esFirstName: '',
+                  esLastName: '',
+                  esUserName: '',
+                  esEmailId: '',
+                  esUserMobNum: '',
+                  esPassword: '',
+                  esConfPassword: ''
+                }
+              )
+            }
+          });
         }
       }
     }

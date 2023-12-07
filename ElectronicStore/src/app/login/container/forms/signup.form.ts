@@ -40,6 +40,16 @@ export const esSignupFormObject: IFormObject = {
         validator: 'required',
         value: true,
         message: 'Username Required'
+      },
+      {
+        validator: 'min',
+        value: true,
+        message: 'Username Min 5 Characters Required'
+      },
+      {
+        validator: 'userExists',
+        value: true,
+        message: 'Username Already Exists'
       }
     ],
     disabled: false,
@@ -68,7 +78,12 @@ export const esSignupFormObject: IFormObject = {
         validator: 'required',
         value: true,
         message: 'Confirm Password Required'
-      }
+      },
+      {
+        validator: 'notSamePass',
+        value: true,
+        message: 'Passwords Must Be Same',
+    },
     ],
     disabled: false,
   },

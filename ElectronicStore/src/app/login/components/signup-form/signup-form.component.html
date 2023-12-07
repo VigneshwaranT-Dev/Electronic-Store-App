@@ -29,7 +29,7 @@
             <div class="form-floating">
               <input type="text"
                      autocomplete="new-text"
-                     [ngClass]="{ 'is-invalid': esSignupForm.get('esFirstName')?.errors && isSubmitted}"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esFirstName')?.errors}"
                      formControlName="esFirstName"
                      class="form-control"
                      id="esFirstName"
@@ -43,7 +43,7 @@
             <div class="form-floating">
               <input type="text"
                      autocomplete="new-text"
-                     [ngClass]="{ 'is-invalid': esSignupForm.get('esLastName')?.errors && isSubmitted}"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esLastName')?.errors}"
                      formControlName="esLastName"
                      class="form-control"
                      oninput="this.value = this.value.replace(/[^A-Za-z0-9-,.;'&/.() ]|^ /g,'')"
@@ -59,9 +59,11 @@
             <div class="form-floating">
               <input type="text"
                      autocomplete="new-text"
-                     [ngClass]="{ 'is-invalid': esSignupForm.get('esUserName')?.errors && isSubmitted}"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esUserName')?.errors}"
                      formControlName="esUserName"
                      class="form-control"
+                     (blur)="convCapBlur($event)"
+                     minlength="5"
                      oninput="this.value = this.value.replace(/[^A-Za-z0-9-,.;'&/.() ]|^ /g,'')"
                      id="esUserName"
                      placeholder="Enter Username"
@@ -70,12 +72,20 @@
             </div>
           </div>
         </div>
+        <div class="me-3 ms-4 mt-2"  *ngIf=" esSignupForm.get('esUserName')?.value.length > 4">
+          <small class="text-danger m-2" *ngIf="isUserAvailable === false">
+            <i class="bi bi-x-circle-fill pe-1"></i> {{userAvailableMsg}}
+          </small>
+          <small class="text-success m-2" *ngIf="isUserAvailable === true">
+            <i class="bi bi-check-circle-fill pe-1"></i> {{userAvailableMsg}}
+          </small>
+        </div>
         <div class="row me-3 ms-3 mt-3">
           <div class="col-md-6">
             <div class="form-floating">
               <input type="password"
                      class="form-control"
-                     [ngClass]="{ 'is-invalid': esSignupForm.get('esPassword')?.errors && isSubmitted}"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esPassword')?.errors}"
                      formControlName="esPassword"
                      autocomplete="new-text"
                      id="esPassword"
@@ -88,7 +98,7 @@
             <div class="form-floating">
               <input type="password"
                      class="form-control"
-                     [ngClass]="{ 'is-invalid': esSignupForm.get('esConfPassword')?.errors && isSubmitted}"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esConfPassword')?.errors}"
                      formControlName="esConfPassword"
                      autocomplete="new-text"
                      id="esConfPassword"
@@ -104,7 +114,7 @@
               <input type="email"
                      autocomplete="new-text"
                      class="form-control"
-                     [ngClass]="{ 'is-invalid': esSignupForm.get('esEmailId')?.errors && isSubmitted}"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esEmailId')?.errors}"
                      formControlName="esEmailId"
                      id="esEmailId"
                      oninput="this.value = this.value.replace(/(^\s*)/gi,'')"
@@ -118,7 +128,7 @@
               <input type="text"
                      autocomplete="new-text"
                      class="form-control"
-                     [ngClass]="{ 'is-invalid': esSignupForm.get('esUserMobNum')?.errors && isSubmitted}"
+                     [ngClass]="{ 'is-invalid': esSignupForm.get('esUserMobNum')?.errors}"
                      formControlName="esUserMobNum"
                      maxlength="10"
                      oninput="this.value = this.value.replace(/(^\s*)/gi,'').replace(/(^0*)/gi,'').replace(/[^0-9]+/g, '')"

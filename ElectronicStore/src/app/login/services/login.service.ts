@@ -29,4 +29,29 @@ export class LoginService {
       })
     )
   }
+
+  signupUser(payload: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+    return this.http.post<any>(`${this.esApiUrl}/api/signup`, payload, {headers}).pipe(
+      map((response: any) => {
+        if (response.status == 2) {
+          return response.data
+        } else {
+          this.toastrService.error(response.message, 'Try Again', { closeButton: true, positionClass: 'toast-top-center',
+          timeOut: 3000, progressBar: true});
+        }
+      })
+    )
+  }
+
+  getUsers(payload: any) :Observable<any> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get<any>(`${this.esApiUrl}/api/signup/getUsers`, {params: payload, headers}).pipe(
+      map((response: any) => {
+
+          return response;
+
+      })
+    )
+  }
 }
